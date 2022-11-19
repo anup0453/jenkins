@@ -1,0 +1,122 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('S1') {
+            parallel {
+                stage(git_checkout1) {
+                    steps {
+                echo 'git checkout1'
+            }
+                    
+                }
+                stage(git_checkout2) {
+                    steps {
+                echo 'git checkout2'
+            }
+                    
+                }
+                stage(git_checkout3) {
+                    steps {
+                echo 'git checkout3'
+            }
+                    
+                }
+                 stage(git_checkout4) {
+                    steps {
+                echo 'git checkout4'
+            }
+                    
+                }
+            }
+            
+        }
+        stage('S2') {
+            parallel {
+                stage(Build1) {
+                    steps {
+                echo 'Build1'
+            }
+                    
+                }
+                stage(Build2) {
+                    steps {
+                echo 'Build2'
+            }
+                    
+                }
+                stage(Build3) {
+                    steps {
+                echo 'Build3'
+            }
+                    
+                }
+                 stage(Build4) {
+                    steps {
+                echo 'Build4'
+            }
+                    
+                }
+            }
+            
+        }
+         stage('S3') {
+            parallel {
+                stage(artifactory_Pull_1) {
+                    steps {
+                echo 'artifactory_Pull_1'
+            }
+                    
+                }
+                stage(artifactory_Pull_2) {
+                    steps {
+                echo 'artifactory_Pull_2'
+            }
+                    
+                }
+                stage(artifactory_Pull_3) {
+                    steps {
+                echo 'artifactory_Pull_3'
+            }
+                    
+                }
+                 stage(artifactory_Pull_4) {
+                    steps {
+                echo 'artifactory_Pull_4'
+            }
+                    
+                }
+            }
+            
+        }
+        stage('S4') {
+            parallel {
+                stage(Deploy_1) {
+                    steps {
+                echo 'Deploy_1'
+            }
+                    
+                }
+                stage(Deploy_2) {
+                    steps {
+                echo 'Deploy_2'
+            }
+                    
+                }
+                stage(Deploy_3) {
+                    steps {
+                echo 'Deploy_3'
+            }
+                    
+                }
+                 stage(artifactory_Pull_4) {
+                    steps {
+                echo 'Deploy_4'
+            }
+                    
+                }
+            }
+            
+        }
+    }
+}
