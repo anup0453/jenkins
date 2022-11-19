@@ -1,0 +1,29 @@
+pipeline {
+    agent {label 'slave1'}
+
+    stages {
+        stage('Git checkout') {
+            steps {
+                echo 'git checkout will happen at this stage'
+                // git 'https://github.com/Thousif2444/java-source.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Build will happen at this stage'
+                // sh 'mvn clean install'
+            }
+        }
+        stage('artifactory pull') {
+            steps {
+                echo 'artifactory pull will happen at this stage'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploy will happen at this stage'
+                // sh '''cd /home/ec2-user/jenkins/workspace/cicd1/ sudo cp target/*.jar /opt/apache*/webapps/'''
+            }
+        }
+    }
+}
